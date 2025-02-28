@@ -4,8 +4,8 @@ import { useState } from "react";
 const Header = ({ text }) => <h1>{text}</h1>;
 const Anecdote = ({ anecdote, votes }) => (
   <>
-    <p>{anecdote}</p>
-    <p>has {votes} votes</p>
+    <div>{anecdote}</div>
+    <div>has {votes} votes</div>
   </>
 );
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
@@ -42,6 +42,10 @@ const App = () => {
       <Button onClick={handleVote} text="vote" />
       <Button onClick={handleClick} text="next anecdote" />
       <Header text="Anecdote with most votes" />
+      <Anecdote
+        anecdote={anecdotes[votes.indexOf(Math.max(...votes))]}
+        votes={Math.max(...votes)}
+      />
     </div>
   );
 };
